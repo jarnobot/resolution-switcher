@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Resolution Switcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="window" role="dialog" aria-label="Resolution Switcher">
+  <div class="titlebar" data-tauri-drag-region>
+    <div class="title">
+      <span class="title-dot"></span>Resolution Switcher
+    </div>
+    <div class="win-ctrls" aria-hidden="true">
+      <button id="btn-minimize" title="Minimize" tabindex="-1">
+        <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0 4h8" stroke="currentColor" stroke-width="1"/></svg>
+      </button>
+      <button id="btn-close" class="close" title="Close" tabindex="-1">
+        <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0 0l8 8M8 0l-8 8" stroke="currentColor" stroke-width="1"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="tabs" role="tablist">
+    <button class="tab active" role="tab" data-idx="0">
+      <span class="tab-name">
+        <span class="dot"></span>
+        <span class="tab-label" contenteditable="true" spellcheck="false">Monitor A</span>
+      </span>
+      <span class="tab-spec" data-tab-spec></span>
+    </button>
+    <button class="tab" role="tab" data-idx="1">
+      <span class="tab-name">
+        <span class="dot"></span>
+        <span class="tab-label" contenteditable="true" spellcheck="false">Monitor B</span>
+      </span>
+      <span class="tab-spec" data-tab-spec></span>
+    </button>
+  </div>
+
+  <div class="body">
+    <h1 class="heading">Display profile</h1>
+    <p class="sub">Save a Native and Custom resolution for each profile.</p>
+
+    <div class="group" data-kind="native">
+      <div class="group-head">
+        <div class="group-label">Native</div>
+        <span class="group-tag" data-tag></span>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="nw">Width</label>
+          <div class="input-wrap">
+            <input id="nw" type="number" min="1" inputmode="numeric" />
+            <span class="unit">px</span>
+          </div>
+        </div>
+        <div class="cross">×</div>
+        <div class="field">
+          <label for="nh">Height</label>
+          <div class="input-wrap">
+            <input id="nh" type="number" min="1" inputmode="numeric" />
+            <span class="unit">px</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="group" data-kind="custom">
+      <div class="group-head">
+        <div class="group-label">Custom</div>
+        <span class="group-tag" data-tag></span>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="cw">Width</label>
+          <div class="input-wrap">
+            <input id="cw" type="number" min="1" inputmode="numeric" />
+            <span class="unit">px</span>
+          </div>
+        </div>
+        <div class="cross">×</div>
+        <div class="field">
+          <label for="ch">Height</label>
+          <div class="input-wrap">
+            <input id="ch" type="number" min="1" inputmode="numeric" />
+            <span class="unit">px</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="refresh-row">
+      <div class="r-label">Refresh rate</div>
+      <div class="hz-wrap">
+        <input id="hz" type="number" min="1" inputmode="numeric" />
+        <span class="unit">Hz</span>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="status" id="status">
+        <span class="pip"></span>
+        <span class="status-text" id="status-text">Loading…</span>
+      </div>
+      <button class="btn" id="save" disabled>Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast">Saved <code id="toast-val"></code></div>
+
+<script src="main.js"></script>
+</body>
+</html>

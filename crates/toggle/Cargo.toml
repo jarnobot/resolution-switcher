@@ -1,0 +1,26 @@
+[package]
+name = "resolution-toggle"
+version = "0.1.0"
+edition = "2021"
+
+[build-dependencies]
+winres = "0.1"
+ico = "0.3"
+
+[dependencies]
+resolution-core = { path = "../resolution-core" }
+
+[target.'cfg(windows)'.dependencies]
+windows = { version = "0.58", features = [
+    "Win32_Foundation",
+    "Win32_Storage_EnhancedStorage",
+    "Win32_System_Com",
+    "Win32_System_Com_StructuredStorage",
+    "Win32_UI_Shell",
+    "Win32_UI_Shell_Common",
+    "Win32_UI_Shell_PropertiesSystem",
+] }
+
+[[bin]]
+name = "ResolutionToggle"
+path = "src/main.rs"
