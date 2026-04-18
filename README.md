@@ -20,9 +20,9 @@ Config is stored at `%APPDATA%\ResolutionSwitcher\profiles.json`.
 npm install
 ```
 
-## Generate icons (one-time)
+## Generate icons (optional)
 
-Create a 1024×1024 PNG at `app-icon.png`, then:
+Icons are pre-included. Only needed if you want to replace them — create a 1024×1024 PNG at `app-icon.png`, then:
 
 ```powershell
 npx tauri icon app-icon.png
